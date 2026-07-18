@@ -1,5 +1,7 @@
 # 📧 AI Email Writer
 
+🚀 **Live Demo:** [https://emailer-assistant.streamlit.app/]
+
 An AI-powered email writing assistant that generates, rewrites, proofreads, and improves professional emails using **Groq's Llama 3.3**, **LangChain**, and **Streamlit**.
 
 The project is built with a modular architecture following software engineering best practices, making it easy to extend with memory, Retrieval-Augmented Generation (RAG), and AI agents.
