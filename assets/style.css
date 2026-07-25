@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+html,
+body,
+[data-testid="stAppViewContainer"] {
+
+    background-color:#080d18;
+
+    background-image:
+    radial-gradient(rgba(120,150,255,.18) 1px, transparent 1px);
+
+    background-size:24px 24px;
+
+    color:white;
+
+    font-family:'IBM Plex Mono', monospace;
+    border-right:1px solid #244dff;
+
+}
+
+/* Hide Streamlit branding */
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"]{
+    background:#060b14;
+    border-right:1px solid #244dff;
+}
+
+section[data-testid="stSidebar"] > div{
+    background:#060b14;
+}
+section[data-testid="stSidebar"]{
+    width:280px !important;
+    min-width:280px !important;
+}
+[data-testid="stSidebar"] *{
+    color:#d8e3ff;
+    font-family:'IBM Plex Mono', monospace;
+}
+/* Radio labels */
+
+/* ===========================
+   Sidebar Radio Buttons
+=========================== */
+
+/* ==========================
+   Sidebar Radio Buttons
+========================== */
+
+div[role="radiogroup"]{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+/* Every option has the same size */
+div[role="radiogroup"] > label{
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 64px !important;
+    min-height: 64px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+
+    box-sizing: border-box;
+
+    padding: 0 18px !important;
+
+    border: 1px solid #315dff;
+    border-radius: 8px;
+
+    background: #0c1425;
+
+    transition: all .25s ease;
+}
+
+/* Text */
+div[role="radiogroup"] label p{
+    margin: 0;
+    font-size: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: white;
+}
+
+/* Hover */
+div[role="radiogroup"] > label:hover{
+    background: #162341;
+    border-color: #5f86ff;
+}
+
+/* Selected */
+div[role="radiogroup"] > label:has(input:checked){
+    background: #1a2d56;
+    border-color: #6d91ff;
+    box-shadow: 0 0 12px rgba(90,130,255,.35);
+}
+.sidebar-logo{
+
+font-family:'Press Start 2P';
+
+font-size:20px;
+
+line-height:2;
+
+color:#6f8dff;
+
+padding-top:20px;
+
+padding-bottom:25px;
+
+}
+
+/* Hover */
+
+div[role="radiogroup"] label:hover{
+
+border:1px solid #4169ff;
+
+background:#101827;
+
+}
+
+/* Selected */
+
+div[role="radiogroup"] label[data-selected="true"]{
+
+border:1px solid #4b69ff;
+
+background:#17264d;
+
+}
+
+/* Text */
+
+div[role="radiogroup"] p{
+
+font-family:'IBM Plex Mono';
+
+font-size:16px;
+
+color:white;
+
+}
+
+/* Main container */
+
+.block-container{
+
+padding-top:2rem;
+
+max-width:1400px;
+
+}
+
+/* Hero title */
+
+.hero-title{
+
+font-family:'Press Start 2P', cursive;
+
+font-size:46px;
+
+color:#6f8dff;
+
+letter-spacing:3px;
+
+margin-bottom:20px;
+
+}
+
+/* Hero line */
+
+.hero-line{
+
+height:2px;
+
+background:#4e72ff;
+
+margin-bottom:30px;
+
+}
+
+/* Intro box */
+
+.info-box{
+
+border:1px solid #334d9b;
+
+background:#111827;
+
+padding:30px;
+
+font-size:22px;
+
+font-style:italic;
+
+line-height:1.7;
+
+margin-bottom:40px;
+
+}
+
+/* Cards */
+
+.card{
+
+border:1px solid #233d85;
+
+background:#0b1323;
+
+padding:25px;
+
+border-radius:6px;
+
+}
+
+/* Section titles */
+
+.section-title{
+
+font-family:'Press Start 2P';
+
+font-size:18px;
+
+color:#5e84ff;
+
+margin-bottom:20px;
+
+}
+
+/* Buttons */
+
+.stButton>button{
+
+background:#4b69ff;
+
+color:white;
+
+border:none;
+
+font-family:'Press Start 2P';
+
+padding:18px;
+
+width:100%;
+
+transition:.3s;
+
+}
+
+.stButton>button:hover{
+
+background:#7593ff;
+
+transform:translateY(-2px);
+
+}
+
+/* Inputs */
+
+.stTextInput input,
+.stTextArea textarea{
+
+background:#101827;
+
+color:white;
+
+border:1px solid #2b4eb8;
+
+}
+
+.stSelectbox div[data-baseweb="select"]{
+
+background:#101827;
+
+}
+
+textarea{
+
+font-family:'IBM Plex Mono';
+
+}
