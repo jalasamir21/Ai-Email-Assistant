@@ -1,14 +1,9 @@
-"""
-streamlit_app.py
-----------------
-
-Streamlit interface for the AI Email Writer.
-"""
-
-import streamlit as st
 
 from config import VALID_LENGTHS, VALID_TONES
 from services.email_services import EmailService
+
+import streamlit as st
+from pathlib import Path
 
 
 # -------------------------------------------------
@@ -19,25 +14,59 @@ st.set_page_config(
     page_title="AI Email Writer",
     page_icon="📧",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
+st.sidebar.markdown("""
+<div class="sidebar-logo">
+AI EMAIL<br>WRITER
+</div>
+""", unsafe_allow_html=True)
 
-st.title("📧 AI Email Writer")
-st.write(
-    "Generate, rewrite, proofread, and improve professional emails using AI."
+st.sidebar.divider()
+
+# st.sidebar.markdown("### MENU")
+
+css = Path("assets/style.css").read_text()
+
+st.markdown(
+    f"<style>{css}</style>",
+    unsafe_allow_html=True,
 )
+st.markdown("""
+<div class="hero-title">
+
+THE AI EMAIL WRITER
+
+</div>
+
+<div class="hero-line"></div>
+
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="info-box">
+
+Every great email starts with context.
+
+Generate, rewrite, proofread and improve professional emails
+using Groq's Llama 3.3, LangChain and AI-powered prompt engineering.
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # -------------------------------------------------
 # Tabs
 # -------------------------------------------------
 
-generate_tab, rewrite_tab, grammar_tab, subject_tab = st.tabs(
+page = st.sidebar.radio(
+    "MENU",
     [
-        "✍️ Generate",
-        "🔄 Rewrite",
-        "📝 Grammar",
-        "📌 Subject",
-    ]
+        "Generate Email",
+        "Rewrite Email",
+        "Grammar Check",
+        "Subject Generator",
+    ],
 )
 
 
@@ -45,10 +74,12 @@ generate_tab, rewrite_tab, grammar_tab, subject_tab = st.tabs(
 # Generate Email
 # =================================================
 
-with generate_tab:
+if page == "Generate Email":
 
-    st.header("Generate an Email")
-
+    st.markdown(
+        '<div class="section-title">GENERATE EMAIL</div>',
+        unsafe_allow_html=True,
+    )
     purpose = st.text_input(
         "Purpose",
         placeholder="e.g. Apply for an AI internship",
@@ -65,15 +96,14 @@ with generate_tab:
         placeholder="Provide the important details...",
     )
 
-    col1, col2 = st.columns(2)
-
-    with col1:
+    left, right = st.columns([1, 1])
+    with left:
         tone = st.selectbox(
             "Tone",
             VALID_TONES,
         )
 
-    with col2:
+    with right:
         length = st.selectbox(
             "Length",
             VALID_LENGTHS,
@@ -86,22 +116,24 @@ with generate_tab:
 
         try:
 
-            response = EmailService.generate_email(
-                purpose,
-                recipient,
-                context,
-                tone,
-                length,
-            )
+            with st.spinner("Generating email..."):
+                response = EmailService.generate_email(
+                    purpose,
+                    recipient,
+                    context,
+                    tone,
+                    length,
+                )
 
             st.success("Email generated successfully!")
 
             st.subheader("Generated Email")
 
+
             st.text_area(
-                "Output",
-                response,
-                height=350,
+                "",
+                value = response,
+                height=450,
             )
 
         except Exception as e:
@@ -112,9 +144,12 @@ with generate_tab:
 # Rewrite
 # =================================================
 
-with rewrite_tab:
+if page == "Rewrite Email":
 
-    st.header("Rewrite an Email")
+    st.markdown(
+    '<div class="section-title">REWRITE EMAIL</div>',
+    unsafe_allow_html=True,
+)
 
     email = st.text_area(
         "Original Email",
@@ -143,9 +178,9 @@ with rewrite_tab:
             st.subheader("Generated Email")
 
             st.text_area(
-                "Output",
-                response,
-                height=350,
+                "",
+                value = response,
+                height=450,
             )
 
         except Exception as e:
@@ -156,9 +191,12 @@ with rewrite_tab:
 # Grammar
 # =================================================
 
-with grammar_tab:
+if page == "Grammar Check":
 
-    st.header("Grammar Correction")
+    st.markdown(
+        '<div class="section-title">GRAMMAR CHECK</div>',
+        unsafe_allow_html=True,
+    )
 
     text = st.text_area(
         "Paste your email",
@@ -179,9 +217,9 @@ with grammar_tab:
             st.subheader("Generated Email")
 
             st.text_area(
-                "Output",
-                response,
-                height=350,
+                "",
+                value = response,
+                height=450,
             )
 
         except Exception as e:
@@ -192,9 +230,12 @@ with grammar_tab:
 # Subject Generator
 # =================================================
 
-with subject_tab:
+if page == "Subject Generator":
 
-    st.header("Generate Subject")
+    st.markdown(
+        '<div class="section-title">SUBJECT GENERATOR</div>',
+        unsafe_allow_html=True,
+    )
 
     subject_context = st.text_area(
         "Email Context",
@@ -217,10 +258,25 @@ with subject_tab:
             st.subheader("Generated Subject")
 
             st.text_area(
-                "Output",
-                response,
+                "",
+                value = response,
                 height=100,
             )
 
         except Exception as e:
             st.error(str(e))
+
+st.markdown(
+    """
+    <div style="
+        text-align:center;
+        margin-top:60px;
+        color:#5e84ff;
+        font-family:'IBM Plex Mono';
+        font-size:13px;
+    ">
+    © 2026 AI EMAIL WRITER · POWERED BY GROQ + LANGCHAIN + STREAMLIT
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
