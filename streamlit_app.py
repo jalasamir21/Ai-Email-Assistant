@@ -48,8 +48,7 @@ st.markdown("""
 
 Every great email starts with context.
 
-Generate, rewrite, proofread and improve professional emails
-using Groq's Llama 3.3, LangChain and AI-powered prompt engineering.
+Generate, rewrite, proofread and improve professional emails.
 
 </div>
 """, unsafe_allow_html=True)
