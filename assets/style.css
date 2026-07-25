@@ -29,6 +29,7 @@ footer {
 }
 
 header[data-testid="stHeader"] {
+    height: 0;
     background: transparent;
 }
 
@@ -46,10 +47,10 @@ section[data-testid="stSidebar"]{
     width:280px !important;
     min-width:280px !important;
 }
-[data-testid="stSidebar"] *{
+/* [data-testid="stSidebar"] *{
     color:#d8e3ff;
     font-family:'IBM Plex Mono', monospace;
-}
+} */
 /* Radio labels */
 
 /* ===========================
