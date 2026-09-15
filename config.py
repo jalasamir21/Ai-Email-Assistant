@@ -52,7 +52,7 @@ GROQ_API_KEY = get_env_variable("GROQ_API_KEY")
 # LLM Configuration
 # ============================
 
-DEFAULT_MODEL = "meta-llama/llama-prompt-guard-2-22m"
+DEFAULT_MODEL = "openai/gpt-oss-120b"
 DEFAULT_TEMPERATURE = 0.4
 
 
